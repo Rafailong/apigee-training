@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="2" name="faulty">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1438808590056</CreatedAt>
+    <CreatedBy>ravila@nearbpo.com</CreatedBy>
+    <Description></Description>
+    <DisplayName>faulty</DisplayName>
+    <LastModifiedAt>1438809834351</LastModifiedAt>
+    <LastModifiedBy>ravila@nearbpo.com</LastModifiedBy>
+    <Policies>
+        <Policy>Set-Success-Status-For-Not-Found</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>jsc://Set-Success-Status-For-Not-Found.js</Resource>
+    </Resources>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>External-API</TargetEndpoint>
+    </TargetEndpoints>
+    <validate>false</validate>
+</APIProxy>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="weather">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1438614776963</CreatedAt>
+    <CreatedBy>ravila@nearbpo.com</CreatedBy>
+    <Description></Description>
+    <DisplayName>weather</DisplayName>
+    <LastModifiedAt>1438619961754</LastModifiedAt>
+    <LastModifiedBy>ravila@nearbpo.com</LastModifiedBy>
+    <Policies>
+        <Policy>Spike-Arrest-1</Policy>
+        <Policy>XML-to-JSON-1</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+    <validate>false</validate>
+</APIProxy>

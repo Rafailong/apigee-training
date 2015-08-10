@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="3" name="extract_from_body">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1438797597337</CreatedAt>
+    <CreatedBy>ravila@nearbpo.com</CreatedBy>
+    <Description>Extract value from payload of callout response</Description>
+    <DisplayName>extract_from_body</DisplayName>
+    <LastModifiedAt>1438797597337</LastModifiedAt>
+    <LastModifiedBy>ravila@nearbpo.com</LastModifiedBy>
+    <Policies>
+        <Policy>Assign-API-Version-Header</Policy>
+        <Policy>Assign-Message-1</Policy>
+        <Policy>Extract-Version-Number</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>weGiftit-Version</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

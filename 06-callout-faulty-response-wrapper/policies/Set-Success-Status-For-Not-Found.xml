@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript async="false" continueOnError="false" enabled="true" timeLimit="200" name="Set-Success-Status-For-Not-Found">
+    <DisplayName>Set-Success-Status-For-Not-Found</DisplayName>
+    <Properties/>
+    <ResourceURL>jsc://Set-Success-Status-For-Not-Found.js</ResourceURL>
+</Javascript>

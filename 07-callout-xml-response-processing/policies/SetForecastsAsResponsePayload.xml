@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="SetForecastsAsResponsePayload">
+    <DisplayName>SetForecastsAsResponsePayload</DisplayName>
+    <Properties/>
+    <Set>
+        <Headers>
+            <Header name="Content-type">"application/json"</Header>
+        </Headers>
+        <Payload>{forecasts}</Payload>
+    </Set>
+    <AssignVariable>
+        <Name>name</Name>
+        <Value/>
+        <Ref/>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

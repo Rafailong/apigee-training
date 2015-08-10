@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <Description/>
+    <PreFlow name="PreFlow">
+        <Request/>
+        <Response/>
+    </PreFlow>
+    <Flows>
+        <Flow name="Get Version">
+            <Description>Get weGift.it Version</Description>
+            <Request/>
+            <Response>
+                <Step>
+                    <Name>Extract-Version-Number</Name>
+                </Step>
+                <Step>
+                    <Name>Assign-API-Version-Header</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/version") and (request.verb = "GET")</Condition>
+        </Flow>
+    </Flows>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <HTTPProxyConnection>
+        <BasePath>/v1/extract</BasePath>
+        <VirtualHost>default</VirtualHost>
+        <VirtualHost>secure</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="weGiftitVersion">
+        <TargetEndpoint>weGiftit-Version</TargetEndpoint>
+        <Condition>(proxy.pathsuffix MatchesPath "/version") and (request.verb = "GET")</Condition>
+    </RouteRule>
+    <RouteRule name="noroute"/>
+</ProxyEndpoint>

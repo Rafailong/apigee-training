@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <Description/>
+    <PreFlow name="PreFlow">
+        <Request/>
+        <Response/>
+    </PreFlow>
+    <Flows>
+        <Flow name="forecast">
+            <Description>weather conditional flow</Description>
+            <Request>
+                <Step>
+                    <Name>Check-w-query-param</Name>
+                    <Condition>request.queryparam.w is null</Condition>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <Name>ExtractForecasts</Name>
+                </Step>
+                <Step>
+                    <Name>SetForecastsAsResponsePayload</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/forecastrss") and (request.verb = "GET")</Condition>
+        </Flow>
+    </Flows>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <HTTPProxyConnection>
+        <BasePath>/v1/xml-processing</BasePath>
+        <VirtualHost>default</VirtualHost>
+        <VirtualHost>secure</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="YahooWeather">
+        <TargetEndpoint>YahooWeather</TargetEndpoint>
+        <Condition>(proxy.pathsuffix MatchesPath "/forecastrss") and (request.verb = "GET")</Condition>
+    </RouteRule>
+    <RouteRule name="noroute"/>
+</ProxyEndpoint>
