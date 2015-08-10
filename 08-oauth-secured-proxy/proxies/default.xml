@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <Description/>
+    <PreFlow name="PreFlow">
+        <Request/>
+        <Response/>
+    </PreFlow>
+    <Flows>
+        <Flow name="forecast">
+            <Description>weather conditional flow</Description>
+            <Request>
+                <Step>
+                    <Name>ValidateOAuth</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/forecastrss") and (request.verb = "GET")</Condition>
+        </Flow>
+        <!--Flow name="Authorize"><Description/><Request><Step><Name>ValidateOAuth</Name></Step></Request><Response/><Condition>proxy.pathsuffix MatchesPath "/forecastrss"</Condition></Flow-->
+    </Flows>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <HTTPProxyConnection>
+        <BasePath>/v1/oauthweather</BasePath>
+        <VirtualHost>default</VirtualHost>
+        <VirtualHost>secure</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="Default">
+        <TargetEndpoint>Default</TargetEndpoint>
+        <Condition>(proxy.pathsuffix MatchesPath "/forecastrss") and (request.verb = "GET")</Condition>
+    </RouteRule>
+    <RouteRule name="noroute"/>
+</ProxyEndpoint>
