@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="cacheresponse">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1439312668560</CreatedAt>
+    <CreatedBy>ravila@nearbpo.com</CreatedBy>
+    <Description></Description>
+    <DisplayName>cacheresponse</DisplayName>
+    <LastModifiedAt>1439313239719</LastModifiedAt>
+    <LastModifiedBy>ravila@nearbpo.com</LastModifiedBy>
+    <Policies>
+        <Policy>Response-Cache-1</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+    <validate>false</validate>
+</APIProxy>
