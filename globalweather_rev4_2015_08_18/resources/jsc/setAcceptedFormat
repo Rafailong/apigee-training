@@ -1,0 +1,31 @@
+/**
+*
+* We check if we got a Header Accept valid value or a URI extention valid value
+* for the response format.
+*
+* `*\/*` is de default value for a Header
+* 
+*/
+
+var jsonResponseFormat = "application/json",
+    xmlResponseFormat = "application/xml",
+	isJSON = false,
+    isXML = false,
+    uriFormat = context.getVariable('uriFormat'),
+    headerFormat = context.getVariable('headerFormat');
+
+if(uriFormat) {
+  setClientAccept(uriFormat);  
+  context.setVariable("preferURIFormat", true);
+} else if (headerFormat !== "*/*") {
+  setClientAccept(headerFormat);
+}
+
+
+function setClientAccept (x) {
+  if (x === "xml" || x === "application/xml") {
+    context.setVariable('clientAccept', xmlResponseFormat);
+  } else {
+    context.setVariable('clientAccept', jsonResponseFormat);
+  }
+}

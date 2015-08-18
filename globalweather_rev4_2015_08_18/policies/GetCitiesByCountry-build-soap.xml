@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="true" enabled="true" name="GetCitiesByCountry-build-soap">
+    <DisplayName>GetCitiesByCountry Build SOAP</DisplayName>
+    <Add>
+        <Headers>
+            <Header name="SOAPAction">http://www.webserviceX.NET/GetCitiesByCountry</Header>
+        </Headers>
+    </Add>
+    <Set>
+        <Headers>
+            <Header name="Content-Type">text/xml; charset=utf-8</Header>
+        </Headers>
+        <Payload contentType="text/xml">
+            <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <soap:Body>
+                    <GetCitiesByCountry xmlns="http://www.webserviceX.NET" xmlns:GetCitiesByCountry="http://www.webserviceX.NET">
+                        <!--Optional-->
+                        <CountryName>{CountryName}</CountryName>
+                    </GetCitiesByCountry>
+                </soap:Body>
+            </soap:Envelope>
+        </Payload>
+        <Verb>POST</Verb>
+    </Set>
+    <AssignVariable>
+        <Name>forward.target.url</Name>
+        <Value>http://www.webservicex.com/globalweather.asmx</Value>
+    </AssignVariable>
+  	<AssignVariable>
+      	<Name>originalURL</Name>
+      	<Ref>message.uri</Ref>
+  	</AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

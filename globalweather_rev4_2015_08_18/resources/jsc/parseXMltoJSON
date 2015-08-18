@@ -1,0 +1,51 @@
+var originalLink = context.getVariable('originalURL');
+var xml = new XML(context.getVariable('soapresponse.body'));
+var citiesNode = xml..City;
+var count = citiesNode.length();
+if (context.getVariable('clientAccept') === 'application/json') {
+  formJSONResponse(count, citiesNode);
+}
+
+if (context.getVariable('clientAccept') === 'application/xml') {
+  formXMLResponse(count, citiesNode);
+}
+
+function formXMLResponse (count, citiesNode) {
+  var result = <Result></Result>;
+  
+  var meta = <Metadata></Metadata>;
+  meta.appendChild(<Link>{originalLink}</Link>);
+  
+  var cts = <Cities></Cities>;
+  for each (var cty in citiesNode) {
+    cts.appendChild(cty);
+  }
+  
+  result.appendChild(meta);
+  result.Country = context.getVariable("CountryName");
+  result.Count = count;
+  result.appendChild(cts);
+  
+  context.setVariable('result', result.toXMLString());
+}
+
+function formJSONResponse (count, citiesNode) {
+  var cities = [];
+  
+  if (count > 0) {
+    for each (var cty in citiesNode) {
+      cities.push(cty.toString());
+    }
+  }
+  
+  var result = {
+    _meta: {
+      _link: originalLink
+    },
+    country: context.getVariable("CountryName"),
+    count: count,
+    cities:cities
+  };
+  
+  context.setVariable('result', JSON.stringify(result));
+}

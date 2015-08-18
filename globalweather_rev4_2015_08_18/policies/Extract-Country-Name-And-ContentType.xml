@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="Extract-Country-Name-And-ContentType">
+    <DisplayName>Extract Country Name and Content-Type format</DisplayName>
+  	<Source>request</Source>
+    <Properties/>
+  	<Header name="Accept">
+      <Pattern ignoreCase="false">{headerFormat}</Pattern>
+  	</Header>
+    <URIPath>
+      <Pattern ignoreCase="true">/countries/{CountryName}.{uriFormat}</Pattern>
+      <Pattern ignoreCase="true">/countries/{CountryName}</Pattern>
+  	</URIPath>
+  	<IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</ExtractVariables>

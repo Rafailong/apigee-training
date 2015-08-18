@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <Description>SOAP proxy generated from http://www.webservicex.com/globalweather.asmx?WSDL</Description>
+    <PreFlow name="PreFlow">
+        <Request>
+            <Step>
+                <Name>save-message</Name>
+            </Step>
+            <Step>
+                <Name>verify-api-key</Name>
+            </Step>
+            <Step>
+                <Name>remove-query-param-apikey</Name>
+            </Step>
+            <Step>
+                <Name>impose-quota</Name>
+            </Step>
+        </Request>
+        <Response/>
+    </PreFlow>
+    <Flows>
+        <Flow name="GetCitiesByCountry">
+            <Description>GetCitiesByCountry</Description>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>Extract-Country-Name-And-ContentType</Name>
+                </Step>
+                <Step>
+                    <Name>Raise-Fault-No-Country-Name</Name>
+                    <Condition>(CountryName = null) or (CountryName = "")</Condition>
+                </Step>
+                <Step>
+                    <Name>Raise-Fault-When-Content-Type-Not-Valid</Name>
+                    <Condition>((headerFormat != "*/*") and (headerFormat != "application/json") and (headerFormat != "application/xml"))</Condition>
+                </Step>
+                <Step>
+                    <Name>Raise-Fault-When-Content-Type-Not-Valid</Name>
+                    <Condition>((uriFormat != null) and (uriFormat != "json") and (uriFormat != "xml"))</Condition>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>Set-Accepted-Format</Name>
+                </Step>
+                <Step>
+                    <Name>GetCitiesByCountry-build-soap</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/countries/{CountryName}") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="unknown-resource">
+            <Description>Unknown Resource</Description>
+            <Request>
+                <Step>
+                    <Name>unknown-resource</Name>
+                </Step>
+            </Request>
+            <Response/>
+        </Flow>
+    </Flows>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <HTTPProxyConnection>
+        <BasePath>/v1/exercise-1</BasePath>
+        <VirtualHost>default</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="default">
+        <TargetEndpoint>default</TargetEndpoint>
+    </RouteRule>
+</ProxyEndpoint>

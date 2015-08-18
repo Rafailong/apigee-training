@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="4" name="globalweather">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1439840765345</CreatedAt>
+    <CreatedBy>ravila@nearbpo.com</CreatedBy>
+    <Description></Description>
+    <DisplayName>globalweather</DisplayName>
+    <LastModifiedAt>1439842514136</LastModifiedAt>
+    <LastModifiedBy>ravila@nearbpo.com</LastModifiedBy>
+    <Policies>
+        <Policy>Extract-Country-Name-And-ContentType</Policy>
+        <Policy>GetCitiesByCountry-build-soap</Policy>
+        <Policy>GetCitiesByCountry-extract-query-param</Policy>
+        <Policy>Parse-XML-to-JSON</Policy>
+        <Policy>Raise-Fault-No-Country-Name</Policy>
+        <Policy>Raise-Fault-When-Content-Type-Not-Valid</Policy>
+        <Policy>Set-Accepted-Format</Policy>
+        <Policy>Set-XML-Response</Policy>
+        <Policy>get-response-soap-body</Policy>
+        <Policy>impose-quota</Policy>
+        <Policy>remove-query-param-apikey</Policy>
+        <Policy>restore-message</Policy>
+        <Policy>save-message</Policy>
+        <Policy>set-response-soap-body</Policy>
+        <Policy>set-target-url</Policy>
+        <Policy>unknown-resource</Policy>
+        <Policy>verify-api-key</Policy>
+        <Policy>xml-to-json</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>wsdl://_apigeeGeneratedModelFromWsdl.json</Resource>
+        <Resource>jsc://parseXMltoJSON</Resource>
+        <Resource>jsc://setAcceptedFormat</Resource>
+    </Resources>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+    <validate>false</validate>
+</APIProxy>

@@ -1,0 +1,23 @@
+{
+	"apiProxyName": "globalweather",
+	"apiProxyType": "REST",
+	"targetNamespace": "http://www.webserviceX.NET",
+	"resources": [
+		{
+			"name": "GetCitiesByCountry",
+			"documentationContent": "Get all major cities by country name(full / part).",
+			"method": "GET",
+			"path": "/citiesbycountry",
+			"inputList": [
+				{
+					"name": "CountryName",
+					"type": "string",
+					"minOccurs": "0",
+					"maxOccurs": "1",
+					"enumValues": ""
+				}
+			],
+			"soapPayload": "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n    <soap:Body>\n        <GetCitiesByCountry xmlns=\"http://www.webserviceX.NET\" xmlns:GetCitiesByCountry=\"http://www.webserviceX.NET\">\n            <!--Optional-->\n            <CountryName>{CountryName}</CountryName>\n        </GetCitiesByCountry>\n    </soap:Body>\n</soap:Envelope>"
+		}
+	]
+}
