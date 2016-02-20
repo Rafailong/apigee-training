@@ -1,0 +1,44 @@
+STATUS:
+ApacheDS is running.
+ZooKeeper is running.
+Cassandra is running.
+management-server is running
+router is running
+message-processor is running
+Apigee UI is running.
+
+You can access the management console at http://10.0.0.195:9000/
+
+NOTES:
+- JMX remote access to Cassandra does not require a password.
+  You can change this by doing the following:
+    sudo /opt/apigee4/bin/cassandra-jmx-auth.sh
+  Note that this will likely require sudo privileges
+  to create the jmxremote.password file.
+
+- Onboarding is no longer being done in apigee-setup.sh. Please use:
+    /opt/apigee4/bin/setup-org.sh
+
+- For management calls:
+     Management-Server will listen to port 8080
+     Router will listen to port 8081
+     Message-Processor will listen to port 8082
+
+
+**********************
+To enable password authentication in Cassandra, change below line in /opt/apigee4/conf/cassandra/cassandra.yaml
+    authenticator: org.apache.cassandra.auth.AllowAllAuthenticator
+to:
+    authenticator: org.apache.cassandra.auth.PasswordAuthenticator
+
+
+If the property is:
+    authenticator: AllowAllAuthenticator
+change it to:
+    authenticator: PasswordAuthenticator
+
+and run this script: /apigee4/bin/update-cass-pwd-in-config.sh
+**********************
+
+
+Finished Setup
